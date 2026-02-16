@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://dfkwp8rky1bl0"]
+
+[ext_resource type="Script" uid="uid://bh14kng8s1rej" path="res://assets/Interactable.gd" id="1_xokin"]
+[ext_resource type="Script" uid="uid://dwjwcm3r5fcqu" path="res://assets/Control_Panel.gd" id="2_jgkvj"]
+[ext_resource type="Script" uid="uid://cq734y5mcixpp" path="res://assets/control_ui.gd" id="3_3l3vm"]
+[ext_resource type="Script" uid="uid://cn1w2vbi3qk8" path="res://assets/Engine_Controls.gd" id="3_lfsqe"]
+[ext_resource type="Script" uid="uid://cerch7pjjwpir" path="res://assets/texture_progress_bar.gd" id="4_lfsqe"]
+[ext_resource type="Script" uid="uid://1cinayoeeyvr" path="res://assets/check_button.gd" id="5_2tuuo"]
+[ext_resource type="PackedScene" uid="uid://dujkendqt6ls1" path="res://addons/tube/tube_inspector.tscn" id="7_3d0yi"]
+[ext_resource type="Script" uid="uid://cy006uvidc4y" path="res://addons/tube/tube_client.gd" id="7_lh2s2"]
+[ext_resource type="Script" uid="uid://t4pe7yqc3pnt" path="res://addons/tube/tube_context.gd" id="8_3d0yi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l3vm"]
+bg_color = Color(0.30692264, 0.3069227, 0.30692258, 1)
+
+[sub_resource type="Gradient" id="Gradient_2tuuo"]
+offsets = PackedFloat32Array(0, 0.307971, 0.9927536)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4117647, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkaj4"]
+gradient = SubResource("Gradient_2tuuo")
+height = 250
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_lfsqe"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2tuuo"]
+gradient = SubResource("Gradient_lfsqe")
+height = 250
+
+[sub_resource type="Resource" id="Resource_00lqo"]
+script = ExtResource("8_3d0yi")
+app_id = "eWayFT)%a2MrBgX"
+metadata/_custom_type_script = "uid://t4pe7yqc3pnt"
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k7ljo"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xokin"]
+size = Vector3(0.9189453, 0.8623657, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbujr"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgkvj"]
+size = Vector3(1.0009766, 0.41830444, 1)
+
+[node name="Control Panel" type="Node3D" unique_id=874953276]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1598007341]
+
+[node name="Node" type="Node" parent="Node3D" unique_id=783768253]
+process_mode = 3
+script = ExtResource("2_jgkvj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node3D" unique_id=878177818]
+process_mode = 3
+
+[node name="Control" type="Control" parent="Node3D/CanvasLayer" unique_id=1082206817]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control UI" type="PanelContainer" parent="Node3D/CanvasLayer/Control" unique_id=287815712]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_3l3vm")
+
+[node name="Control2" type="Control" parent="Node3D/CanvasLayer/Control/Control UI" unique_id=339399327]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node3D/CanvasLayer/Control/Control UI/Control2" unique_id=149687534]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 114.0
+offset_bottom = 39.0
+text = "Lemons"
+
+[node name="TabContainer" type="TabContainer" parent="Node3D/CanvasLayer/Control/Control UI/Control2" unique_id=1173501766]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 49.0
+offset_right = 1000.0
+offset_bottom = 499.0
+current_tab = 2
+
+[node name="Engine Controls" type="Control" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer" unique_id=1410893920]
+visible = false
+layout_mode = 2
+script = ExtResource("3_lfsqe")
+metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Engine Controls" unique_id=1926453379]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 60.0
+offset_right = 328.0
+offset_bottom = 100.0
+text = "Engine be good"
+fit_content = true
+
+[node name="Button" type="Button" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Engine Controls" unique_id=2138759601]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 161.0
+offset_right = 227.0
+offset_bottom = 281.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3l3vm")
+text = "Give Coolant.
+(-10 lemons)"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Engine Controls" unique_id=1927973931]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 86.0
+offset_bottom = 275.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_rkaj4")
+texture_progress = SubResource("GradientTexture2D_2tuuo")
+script = ExtResource("4_lfsqe")
+
+[node name="Map" type="Control" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer" unique_id=935060168]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CheckButton" type="CheckButton" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Map" unique_id=673931156]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 94.0
+offset_right = 322.0
+offset_bottom = 125.0
+text = "Security Plasma Wall 1"
+script = ExtResource("5_2tuuo")
+
+[node name="Multiplayer" type="VScrollBar" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer" unique_id=1384082787]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="TubeInspector" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Multiplayer" unique_id=529892027 node_paths=PackedStringArray("client") instance=ExtResource("7_3d0yi")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+offset_right = 660.33325
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+client = NodePath("TubeClient")
+
+[node name="TubeClient" type="Node" parent="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Multiplayer/TubeInspector" unique_id=714628036]
+script = ExtResource("7_lh2s2")
+context = SubResource("Resource_00lqo")
+peer_signaling_max_attempts = 10
+metadata/_custom_type_script = "uid://cy006uvidc4y"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=355993335]
+mesh = SubResource("CylinderMesh_k7ljo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=970134486 node_paths=PackedStringArray("node_with_thing_to_do") groups=["interactable"]]
+script = ExtResource("1_xokin")
+node_with_thing_to_do = NodePath("../../Node3D/Node")
+dialogue = " Press E"
+subdialogue = " to open control panel."
+DialogueType = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1037972835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040527344, -0.06881714, 0)
+shape = SubResource("BoxShape3D_xokin")
+debug_fill = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1500186840]
+transform = Transform3D(0.74076945, 0.6717594, 0, -0.6717594, 0.74076945, 0, 0, 0, 1, 0.02143836, 0.66211987, 0)
+mesh = SubResource("BoxMesh_rbujr")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=39144030 node_paths=PackedStringArray("node_with_thing_to_do") groups=["interactable"]]
+script = ExtResource("1_xokin")
+node_with_thing_to_do = NodePath("../../Node3D/Node")
+dialogue = " Press E"
+subdialogue = " to open control panel."
+DialogueType = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=716429344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00048819184, -0.15672296, 0)
+shape = SubResource("BoxShape3D_jgkvj")
+debug_fill = false
+
+[connection signal="pressed" from="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Engine Controls/Button" to="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Engine Controls" method="supply_coolant"]
+[connection signal="pressed" from="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Map/CheckButton" to="Node3D/CanvasLayer/Control/Control UI/Control2/TabContainer/Map/CheckButton" method="_on_pressed"]

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ckm8ahpdastid"]
+
+[ext_resource type="PackedScene" uid="uid://queeu8hxeu46" path="res://assets/gun2.glb" id="1_fry05"]
+[ext_resource type="Animation" uid="uid://b5uunf2s2s8oq" path="res://assets/shoot.res" id="2_fry05"]
+[ext_resource type="Texture2D" uid="uid://cl0gpxqapind7" path="res://TexturesImages/muzzle_flashs/m_3.png" id="2_i8pi3"]
+[ext_resource type="Script" uid="uid://b0b1o8vmkmdcm" path="res://assets/lerp.gd" id="2_v70l2"]
+[ext_resource type="Script" uid="uid://tjj8hw2wqjrw" path="res://assets/animation_player.gd" id="3_7c1qe"]
+[ext_resource type="Script" uid="uid://cnuhqmvcy0hgg" path="res://assets/ray_cast_3d.gd" id="4_1psom"]
+[ext_resource type="PackedScene" uid="uid://dk3pq6c4bpkdx" path="res://assets/testbullet.tscn" id="7_fo6nf"]
+[ext_resource type="Script" uid="uid://cvmnwc7sel77q" path="res://assets/timer.gd" id="8_fo6nf"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7c1qe"]
+_data = {
+&"new_animation": ExtResource("2_fry05")
+}
+
+[node name="gun2" unique_id=2096451757 instance=ExtResource("1_fry05")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_v70l2")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Armature/Skeleton3D" index="1" unique_id=731676241]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1.1500323, 5.458436)
+visible = false
+texture = ExtResource("2_i8pi3")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Armature/Skeleton3D" index="2" unique_id=894325859]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 1.1500323, 5.458436)
+visible = false
+texture = ExtResource("2_i8pi3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1615315436]
+libraries/ = SubResource("AnimationLibrary_7c1qe")
+movie_quit_on_finish = true
+script = ExtResource("3_7c1qe")
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2" unique_id=39435616]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.23003295, 0.88960373)
+target_position = Vector3(0, 0, -2000)
+script = ExtResource("4_1psom")
+scene = ExtResource("7_fo6nf")
+knockback = 10.0
+
+[node name="Timer" type="Timer" parent="." index="3" unique_id=512162358]
+wait_time = 0.5
+one_shot = true
+script = ExtResource("8_fo6nf")
+
+[node name="Marker3D" type="Marker3D" parent="." index="4" unique_id=1193513043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.300085e-08, 0.22632325, 0.8350324)

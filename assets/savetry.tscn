@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwsvidegils0s"]
+
+[ext_resource type="Script" uid="uid://cs2hhfd84mkh2" path="res://Scripts (GD)/rich_text_label.gd" id="1_10tq1"]
+
+[node name="Node2D" type="Node3D"]
+
+[node name="clickscounter" type="RichTextLabel" parent="." node_paths=PackedStringArray("lemonscounter")]
+offset_left = 20.0
+offset_top = 6.0
+offset_right = 656.0
+offset_bottom = 40.0
+script = ExtResource("1_10tq1")
+GOTTA_GO_FAST = 0.001
+lemonscounter = NodePath("../LEMONS")
+
+[node name="LEMONS" type="RichTextLabel" parent="."]
+offset_left = 512.0
+offset_top = 6.0
+offset_right = 1148.0
+offset_bottom = 35.0
+
+[node name="save button" type="Button" parent="."]
+offset_left = 974.0
+offset_top = 334.0
+offset_right = 1107.0
+offset_bottom = 458.0
+text = "savey gravy"
+
+[node name="load button" type="Button" parent="."]
+offset_left = 974.0
+offset_top = 184.0
+offset_right = 1107.0
+offset_bottom = 308.0
+text = "loady boaties"
+
+[node name="click thing" type="Button" parent="."]
+offset_left = 977.0
+offset_top = 481.0
+offset_right = 1110.0
+offset_bottom = 605.0
+text = "click"
+
+[node name="LEMON buy button" type="Button" parent="."]
+offset_left = 829.0
+offset_top = 481.0
+offset_right = 966.0
+offset_bottom = 605.0
+text = "buy a lemon (100 clicks)"
+autowrap_mode = 3
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6161822, 0)
+
+[connection signal="pressed" from="save button" to="clickscounter" method="_on_button_2_pressed"]
+[connection signal="pressed" from="load button" to="clickscounter" method="_on_button_4_pressed"]
+[connection signal="pressed" from="click thing" to="clickscounter" method="clicksl"]
+[connection signal="pressed" from="LEMON buy button" to="clickscounter" method="lemon"]

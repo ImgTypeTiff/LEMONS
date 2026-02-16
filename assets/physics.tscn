@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://csuib7w48p0yd"]
+
+[ext_resource type="Texture2D" uid="uid://cur4uo45resne" path="res://TexturesImages/godot-prototype-texture/Vector/checker_512x512/checker_red_512x512.svg" id="1_5ogd2"]
+[ext_resource type="Script" uid="uid://ch2q75tpfqxdo" path="res://assets/physics.gd" id="1_agxhv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agxhv"]
+albedo_texture = ExtResource("1_5ogd2")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hk0ex"]
+material = SubResource("StandardMaterial3D_agxhv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_htxsa"]
+
+[node name="physicsbox" type="RigidBody3D" unique_id=1847447061 groups=["damageable", "interactable", "lemon", "physics"]]
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 10
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_agxhv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1129650065]
+mesh = SubResource("BoxMesh_hk0ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=654893321]
+shape = SubResource("BoxShape3D_htxsa")

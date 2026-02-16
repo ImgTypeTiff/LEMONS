@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cnd3tibqdd40c"]
+
+[ext_resource type="Script" uid="uid://dbibd8fji3u1y" path="res://assets/nodebullet.gd" id="1_v7oki"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v7oki"]
+height = 1.0
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_v7oki")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.013176851, 0.99991316, 0, -0.99991316, 0.013176851, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_v7oki")

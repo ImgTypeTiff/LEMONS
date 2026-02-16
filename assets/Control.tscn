@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2b800n18xrkv"]
+
+[ext_resource type="Script" uid="uid://cs2hhfd84mkh2" path="res://Scripts (GD)/rich_text_label.gd" id="1_iljke"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1158.0
+offset_bottom = 679.0
+
+[node name="clickscounter" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 6.0
+offset_right = 656.0
+offset_bottom = 40.0
+script = ExtResource("1_iljke")
+GOTTA_GO_FAST = 0.001
+
+[node name="LEMONS" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 28.806002
+anchor_right = 28.806002
+offset_left = -640.2401
+offset_top = 6.0
+offset_right = -4.2401123
+offset_bottom = 35.0
+
+[node name="save button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 27.675001
+anchor_top = 9.900001
+anchor_right = 27.675001
+anchor_bottom = 9.900001
+offset_left = -133.0
+offset_top = -62.00003
+offset_bottom = 61.99997
+text = "savey gravy"
+
+[node name="load button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 27.675001
+anchor_top = 6.15
+anchor_right = 27.675001
+anchor_bottom = 6.15
+offset_left = -133.0
+offset_top = -62.0
+offset_bottom = 62.0
+text = "loady boaties"

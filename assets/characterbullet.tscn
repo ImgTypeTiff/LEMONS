@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cbqytgcmii54a"]
+
+[ext_resource type="Script" uid="uid://wy0sgsc2ry7h" path="res://assets/characterbullet.gd" id="1_d7351"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v7oki"]
+size = Vector3(0.01, 1, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
+emission_enabled = true
+emission = Color(0.9894362, 1, 0.6486272, 1)
+emission_energy_multiplier = 6.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_16f8s"]
+size = Vector3(0.01, 0.01, 1)
+
+[node name="coolbullet" type="CharacterBody3D" groups=["bullet"]]
+top_level = true
+script = ExtResource("1_d7351")
+speed = 1.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_v7oki")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7oki")
+
+[node name="Timer" type="Timer" parent="RayCast3D"]
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_16f8s")
+
+[connection signal="timeout" from="RayCast3D/Timer" to="." method="cleanup"]

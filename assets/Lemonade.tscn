@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dcjwu0annuyyi"]
+
+[ext_resource type="Texture2D" uid="uid://d27yjiqjyr3k3" path="res://TexturesImages/godot-prototype-texture/Vector/grid_512x512/grid_yellow_512x512.svg" id="1_trmqq"]
+[ext_resource type="Script" uid="uid://dxcpr6laprsgg" path="res://assets/static_body_3d.gd" id="1_u2jod"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2jod"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mnrha"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vottg"]
+albedo_texture = ExtResource("1_trmqq")
+uv1_scale = Vector3(3, 2, 0)
+uv1_offset = Vector3(1, 1, 0)
+uv1_world_triplanar = true
+
+[node name="StaticBody3D" type="CharacterBody3D" groups=["damageable", "lemon", "physics"]]
+script = ExtResource("1_u2jod")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_u2jod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mnrha")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vottg")

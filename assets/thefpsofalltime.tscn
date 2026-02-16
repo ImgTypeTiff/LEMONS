@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://qd1vechhgn1n"]
+
+[ext_resource type="Script" uid="uid://cb5bf7eqned7j" path="res://Scripts (GD)/thefpsofalltime.gd" id="1_87xyu"]
+[ext_resource type="Script" uid="uid://nyn8bdup44lp" path="res://Scripts (GD)/ray_cast_3d.gd" id="2_kawpa"]
+[ext_resource type="PackedScene" uid="uid://ckm8ahpdastid" path="res://assets/Gun.tscn" id="4_bjgu7"]
+[ext_resource type="FontFile" uid="uid://b3e5btfkg8ph7" path="res://Scripts (GD)/misc odd files/VCR_OSD_MONO_1.001.ttf" id="4_hq6qf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwjto"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_606se"]
+
+[node name="NJFPC" type="CharacterBody3D" unique_id=838328567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.523716, 0)
+collision_layer = 5
+floor_stop_on_slope = false
+script = ExtResource("1_87xyu")
+rotation_speed = Vector3(0, 0, 0)
+Move_Speed = 5.0
+InputDictionary = {
+"Backward": "Backward",
+"Escape": "ui_cancel",
+"Forward": "Forward",
+"Interact": "ui_accept",
+"Jump": "Jump",
+"Left": "Left",
+"Right": "Right",
+"Sprint": "Up"
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=450082993]
+shape = SubResource("CapsuleShape3D_bwjto")
+
+[node name="Head" type="Node3D" parent="." unique_id=77240595]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=110452263]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D" unique_id=793325511]
+light_energy = 5.113
+spot_range = 11.987935
+spot_angle = 57.250282
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=469388501 node_paths=PackedStringArray("DLabel", "DLabel2")]
+target_position = Vector3(0, 0, -3)
+script = ExtResource("2_kawpa")
+DLabel = NodePath("../../../CanvasLayer/InteracrLabelHolder/PanelContainer/VBoxContainer/InteractLabel")
+DLabel2 = NodePath("../../../CanvasLayer/InteracrLabelHolder/PanelContainer/VBoxContainer/InteractLabel2")
+
+[node name="Unfocused" type="Marker3D" parent="Head/Camera3D" unique_id=293529538]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.55496776, -0.5, -0.2774912)
+
+[node name="gun2" parent="Head/Camera3D" unique_id=1436373780 node_paths=PackedStringArray("Focused", "Unfocused") instance=ExtResource("4_bjgu7")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.55496776, -0.5, -0.2774912)
+Focused = NodePath("../Focused")
+Unfocused = NodePath("../Unfocused")
+
+[node name="Focused" type="Marker3D" parent="Head/Camera3D" unique_id=1635553316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025096655, -0.33038354, -0.5471451)
+
+[node name="ilt" type="Node3D" parent="." unique_id=1192748042]
+unique_name_in_owner = true
+
+[node name="LTilt" type="Marker3D" parent="ilt" unique_id=2134428449]
+unique_name_in_owner = true
+
+[node name="RTilt" type="Marker3D" parent="ilt" unique_id=590150189]
+unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1615151975]
+
+[node name="InteracrLabelHolder" type="Control" parent="CanvasLayer" unique_id=183745107]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/InteracrLabelHolder" unique_id=2056689038]
+layout_mode = 0
+offset_left = 734.0
+offset_top = 236.0
+offset_right = 1146.0
+offset_bottom = 449.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InteracrLabelHolder/PanelContainer" unique_id=220683435]
+layout_mode = 2
+
+[node name="InteractLabel" type="RichTextLabel" parent="CanvasLayer/InteracrLabelHolder/PanelContainer/VBoxContainer" unique_id=282769687]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hq6qf")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "="
+fit_content = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="InteractLabel2" type="RichTextLabel" parent="CanvasLayer/InteracrLabelHolder/PanelContainer/VBoxContainer" unique_id=273683106]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_hq6qf")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "="
+fit_content = true
+autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=446427000]
+mesh = SubResource("CapsuleMesh_606se")
