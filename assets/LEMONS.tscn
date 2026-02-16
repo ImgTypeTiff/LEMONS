@@ -477,6 +477,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2757082, 10.694262)
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, 0)
 script = ExtResource("19_g2jxr")
+STEER_SPEED = null
 STEER_LIMIT = 0.4
 engine_force_value = 50
 

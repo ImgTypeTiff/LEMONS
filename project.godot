@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="If life gives you lemons, Hope it's enough."
 run/main_scene="uid://c2jewnj1solfr"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
 [audio]
 

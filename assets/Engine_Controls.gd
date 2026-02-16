@@ -13,6 +13,11 @@ func supply_coolant():
 	pass
 
 func _ready():
+	timer.wait_time = 10
+	timer.autostart = true
+	timer.one_shot = false
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
 	_calculate_engine_temp()
 	pass
 
@@ -20,8 +25,6 @@ func _calculate_engine_temp():
 	timer.wait_time = 10
 	timer.autostart = true
 	timer.one_shot = false
-	add_child(timer)
-	timer.timeout.connect(_on_timer_timeout)
 
 func _on_timer_timeout():
 	VAR.Engine_Temperture += 10

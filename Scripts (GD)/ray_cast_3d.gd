@@ -60,11 +60,14 @@ func Set_Dialogue(type):
 		DLabel2.text = body.subdialogue
 		if Input.is_action_just_pressed("Interact"):
 			if !VAR.is_interacting:
+				print("Starting Interaction...")
+				$"../../..".set_physics_process(false)
 				VAR.is_interacting = true
 				interact()
 			elif VAR.is_interacting:
 				print("stopping interaction...")
 				$"../../../CanvasLayer/InteracrLabelHolder".show()
+				$"../../..".set_physics_process(true)
 				VAR.is_interacting = false
 				body.stop_interaction()
 func interact():
